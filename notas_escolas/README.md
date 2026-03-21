@@ -26,4 +26,4 @@ Link -> https://excalidraw.com/#room=0fc4275e5e44eeefa367,GHLi7rnkAp1iw2CYBw5Wcw
 
 ## Print da home-page criada
 
-<<  COLOQUE A IMAGEM AQUI >>
+![alt text](<public/21.03 - Resultado Site.png>)
