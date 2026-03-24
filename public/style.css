@@ -373,3 +373,232 @@ section{
     background: var(--cor-principal);
     border-radius: 10px;
 }
+
+
+@media (max-width: 900px) {
+
+    body {
+        height: auto;
+        min-height: 100vh;
+        gap: 8px;
+    }
+
+    header, main, footer {
+        width: 95%;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: auto;
+        padding: 8px 0;
+    }
+
+    nav {
+        width: calc(100% - 4%);
+        height: auto;
+        margin: 1% 2%;
+        min-height: 200px;
+    }
+
+    section {
+        width: calc(100% - 4%);
+        height: auto;
+        margin: 1% 2%;
+        min-height: 400px;
+    }
+
+    #informacoes_alunos {
+        height: auto;
+        flex-direction: row;
+    }
+
+    .espaco_foto {
+        width: 25%;
+    }
+
+    .espaco_informacoes {
+        width: 75%;
+    }
+
+    #notas_alunos {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .botoes_turmas button {
+        font-size: 18px;
+    }
+
+    #nomes_alunos button {
+        font-size: 18px;
+    }
+
+    .texto_rodape p {
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        gap: 6px;
+    }
+
+    header, main, footer {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    header {
+        flex-direction: column;
+        min-height: auto;
+        padding: 10px;
+    }
+
+    .img_cabecalho {
+        width: 100%;
+        height: 80px;
+        justify-content: flex-start;
+    }
+
+    .titulo_cabecalho {
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        text-align: center;
+        padding: 6px 0;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+    }
+
+    nav {
+        width: 100%;
+        height: auto;
+        margin: 6px 0;
+        border-radius: 0;
+    }
+
+    section {
+        width: 100%;
+        height: auto;
+        margin: 6px 0;
+        border-radius: 0;
+        min-height: 60vh;
+    }
+
+    #form_pesquisa form {
+        font-size: 16px;
+    }
+
+    .caixinhas_input {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .caixinhas_input label {
+        width: 100%;
+    }
+
+    .caixinhas_input input {
+        width: 100%;
+    }
+
+    #form_pesquisa button {
+        width: 90px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .botoes_turmas button {
+        font-size: 16px;
+        padding: 6px;
+    }
+
+    #nomes_alunos {
+        height: auto;
+        min-height: 60px;
+    }
+
+    #nomes_alunos button {
+        font-size: 14px;
+        width: auto;
+        min-width: 100px;
+        padding: 0 10px;
+    }
+
+    #informacoes_alunos {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .espaco_foto {
+        width: 100%;
+        height: 180px;
+    }
+
+    .espaco_foto img {
+        width: 160px;
+        height: 160px;
+        border-radius: 8px;
+    }
+
+    .espaco_informacoes {
+        width: 100%;
+        height: auto;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .espaco_informacoes label,
+    .conteiner_informacao label {
+        font-size: 15px;
+    }
+
+    .linha_informacao {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #notas_alunos {
+        height: auto;
+        min-height: 150px;
+        padding: 12px;
+    }
+
+    footer {
+        flex-direction: column;
+        min-height: auto;
+        padding: 10px 0;
+    }
+
+    .texto_rodape {
+        width: 100%;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .texto_rodape p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .direito_rodape {
+        width: 100%;
+        justify-content: center;
+        min-height: 40px;
+    }
+
+    #copyright {
+        position: static;
+        text-align: center;
+        padding: 4px 0;
+        font-size: 12px;
+    }
+}
