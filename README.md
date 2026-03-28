@@ -26,4 +26,12 @@ Link -> https://excalidraw.com/#room=0fc4275e5e44eeefa367,GHLi7rnkAp1iw2CYBw5Wcw
 
 ## Print da home-page criada
 
-![alt text](<public/21.03 - Resultado Site.png>)
+![alt text](<public/imagens/21.03 - Resultado Site.png>)
+
+Print anterior ja demonstra como o site fica no Descktop
+
+Prints mostrando resultados da atividade CSS PURO:
+
+![alt text](<public/imagens/CSS PURO/PaginaInicial.png>)
+![alt text](<public/imagens/CSS PURO/Responsividade 1.png>)
+![alt text](<public/imagens/CSS PURO/Responsividade 2.png>)
