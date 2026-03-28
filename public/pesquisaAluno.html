@@ -28,12 +28,12 @@
 
                     <div class="caixinhas_input">
                     <label for="cpf">CPF do aluno:</label>
-                    <input type="search" id="cpf_input" name="cpf_aluno" placeholder="Digite o CPF...">
+                    <input type="search" id="cpf" name="cpf_aluno" placeholder="Digite o CPF...">
                     </div>
                     
                     <div class="caixinhas_input">
                     <label for="cpf">Email do aluno:</label>
-                    <input type="search" id="email_input" name="email_aluno" placeholder="Digite o email...">
+                    <input type="search" id="email" name="email_aluno" placeholder="Digite o email...">
                     </div>
 
                     <div class="botoes">
@@ -44,158 +44,131 @@
             </div>
             <div id="select_ano">
                 <div class="botoes_turmas">
-                    <button onclick="carregarTurma('1A')">1° ano A</button>
+                    <button><a href="">1° ano A</a></button>
                 </div>
                 <div class="botoes_turmas">
-                    <button onclick="carregarTurma('1B')">1° ano B</button>
+                    <button><a href="">1° ano B</a></button>
                 </div>
                 <div class="botoes_turmas">
-                    <button onclick="carregarTurma('1C')">1° ano C</button>
+                    <button><a href="">1° ano C</a></button>
                 </div>
                 <div class="botoes_turmas">
-                    <button onclick="carregarTurma('2A')">2° ano A</button>
+                    <button><a href="">2° ano A</a></button>
                 </div>
                 <div class="botoes_turmas">
-                    <button onclick="carregarTurma('2B')">2° ano B</button>
+                    <button><a href="">2° ano B</a></button>
                 </div>
                 <div class="botoes_turmas">
-                    <button onclick="carregarTurma('2C')">2° ano C</button>
+                    <button><a href="">3° ano A</a></button>
                 </div>
                 <div class="botoes_turmas">
-                    <button onclick="carregarTurma('3A')">3° ano A</button>
+                    <button><a href="">3° ano B</a></button>
                 </div>
                 <div class="botoes_turmas">
-                    <button onclick="carregarTurma('3B')">3° ano B</button>
+                    <button><a href="">3° ano C</a></button>
                 </div>
             </div>
         </nav>
         <section>
-            <!--Conteudo ao abrir pagina-->
-            <div id="conteudo-inicial">
-                <div class="informacoes_site">
-                    <img src="imagens/representacao_informacoes.png">
-                    <p>Informações pessoais de cada aluno</p>
-                </div>
-
-                <div class="informacoes_site">
-                    <img src="imagens/representacao_nomes.png">
-                    <p>Selecione o nome do aluno que deseja visualizar</p>
-                </div>
-
-                <div class="informacoes_site">
-                    <img src="imagens/representacao_notas.png">
-                    <p>Veja notas do aluno selecionado</p>
-                </div>
-            </div>
-            <!-- Conteúdo ao selecionar turma -->
-
             <div id="nomes_alunos">
-                <!-- Botões dos alunos serão inseridos via JS -->
+                <button>Ana</button>
+                <button>Barbara</button>
+                <button>Carlos</button>
+                <button>Daniel</button>
+                <button>Eduarda</button>
+                <button>Fabricio</button>
+                <button>Gloria</button>
+                <button>Henrick</button>
+                <button>Iara</button>
+                <button>Julia</button>
             </div>
-
             <div id="informacoes_alunos">
                 <div class="espaco_foto">
-                    <img id="fotoAluno" src="imagens/foto_de_homem_generica.png" alt="">
+                    <img src="imagens/foto_de_homem_generica.png" alt="">
                 </div>
-
                 <div class="espaco_informacoes">
                     <div class="linha_informacao">
                         <div class="conteiner_informacao">
                             <label>Nome Completo:</label>
-                            <span id="nomeCompleto"></span>
+                            <span class="informacao">Carlos Eduardo da Silva</span>
                         </div>
-
                         <div class="conteiner_informacao">
                             <label>CPF:</label>
-                            <span id="cpf"></span>
+                            <span class="informacao">123.456.789-10</span>
                         </div>
                     </div>
-
                     <div class="linha_informacao">
                         <div class="conteiner_informacao">
-                            <label>Número de matrícula:</label>
-                            <span id="matricula"></span>
+                            <label>Número de matricula:</label>
+                            <span class="informacao">16475298</span>
                         </div>
-
                         <div class="conteiner_informacao">
                             <label>Email:</label>
-                            <span id="email"></span>
+                            <span class="informacao">carlinhosperigoso2015@hotmail.com.br</span>
                         </div>
                     </div>
-
                     <div class="linha_informacao">
                         <div class="conteiner_informacao">
-                            <label>Média geral:</label>
-                            <span id="media"></span>
+                            <label>Media geral:</label>
+                            <span class="informacao">6.94/10</span>
                         </div>
-
                         <div class="conteiner_informacao">
-                            <label>Matéria Destaque:</label>
-                            <span id="destaque"></span>
+                            <label>Materia Destaque:</label>
+                            <span class="informacao">Matematica</span>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div id="notas_alunos">
                 <div class="linha_informacao">
                     <div class="conteiner_informacao">
-                        <label>Matemática:</label>
-                        <span id="matematica"></span>
+                            <label>Matematica:</label>
+                            <span class="informacao">9.5/10</span>
+                        </div>
+                        <div class="conteiner_informacao">
+                            <label>Lingua portuguesa:</label>
+                            <span class="informacao">6/10</span>
+                        </div>
                     </div>
-
-                    <div class="conteiner_informacao">
-                        <label>Língua Portuguesa:</label>
-                        <span id="portugues"></span>
-                    </div>
+                <div class="linha_informacao">
+                        <div class="conteiner_informacao">
+                            <label>Historia:</label>
+                            <span class="informacao">5/10</span>
+                        </div>
+                        <div class="conteiner_informacao">
+                            <label>Geografia:</label>
+                            <span class="informacao">7.5/10</span>
+                        </div>
                 </div>
-
                 <div class="linha_informacao">
                     <div class="conteiner_informacao">
-                        <label>História:</label>
-                        <span id="historia"></span>
+                            <label>Física:</label>
+                            <span class="informacao">8.3/10</span>
+                        </div>
+                        <div class="conteiner_informacao">
+                            <label>Biologia:</label>
+                            <span class="informacao">6.8/10</span>
+                        </div>
                     </div>
-
-                    <div class="conteiner_informacao">
-                        <label>Geografia:</label>
-                        <span id="geografia"></span>
-                    </div>
-                </div>
-
                 <div class="linha_informacao">
-                    <div class="conteiner_informacao">
-                        <label>Física:</label>
-                        <span id="fisica"></span>
-                    </div>
-
-                    <div class="conteiner_informacao">
-                        <label>Biologia:</label>
-                        <span id="biologia"></span>
-                    </div>
+                        <div class="conteiner_informacao">
+                            <label>Filosofia:</label>
+                            <span class="informacao">4/10</span>
+                        </div>
+                        <div class="conteiner_informacao">
+                            <label>Sociologia:</label>
+                            <span class="informacao">6.1/10</span>
+                        </div>
                 </div>
-
                 <div class="linha_informacao">
-                    <div class="conteiner_informacao">
-                        <label>Filosofia:</label>
-                        <span id="filosofia"></span>
-                    </div>
-
-                    <div class="conteiner_informacao">
-                        <label>Sociologia:</label>
-                        <span id="sociologia"></span>
-                    </div>
-                </div>
-
-                <div class="linha_informacao">
-                    <div class="conteiner_informacao">
-                        <label>Língua Inglesa:</label>
-                        <span id="ingles"></span>
-                    </div>
-
-                    <div class="conteiner_informacao">
-                        <label>Redação:</label>
-                        <span id="redacao"></span>
-                    </div>
+                        <div class="conteiner_informacao">
+                            <label>Lingua Inglesa:</label>
+                            <span class="informacao">7.2/10</span>
+                        </div>
+                        <div class="conteiner_informacao">
+                            <label>Redação:</label>
+                            <span class="informacao">9/10</span>
+                        </div>
                 </div>
             </div>
         </section>
@@ -214,7 +187,5 @@
             <p id="copyright">@2026Notas</p>
         </div>
     </footer>
-
-<script src="script.js"></script>
 </body>
 </html>

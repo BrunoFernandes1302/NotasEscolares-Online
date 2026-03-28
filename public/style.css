@@ -5,6 +5,7 @@
 
 :root{
     --cor-principal:rgb(55, 88, 104); 
+    --cor-principalHover:  rgb(48, 152, 205);
 }
 
 body {
@@ -87,7 +88,7 @@ section{
 /* Rodapé */
 
 .texto_rodape{
-    width: 50%;
+    width: 70%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -100,16 +101,41 @@ section{
 }
 
 .direito_rodape{
-    width: 50%;
+    width: 30%;
     height: 100%;
     display: flex;
     position: relative;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 #copyright{
-    position: absolute;
+    position: flex;
     bottom: 15px;
     right: 15px;
+    height: 20%;
+}
+
+.icons_redes{
+    margin: 0   10px;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.icons_redes a{
+    font-size: 20px;
+    color: var(--cor-principal);
+}
+
+.icons_redes a:hover{
+    font-size: 20px;
+    color: var(--cor-principalHover);
+}
+
+.icons_redes a:active{
+    font-size: 20px;
+    color: var(--cor-principal);
 }
 
 /* Espaço de pesquisa (nav - pesquisa) */
@@ -216,6 +242,23 @@ section{
     display: flex;
 }
 
+.botoes_turmas a{
+    text-decoration: none;
+}
+
+.botoes_turmas a:link {
+    color: black;
+}
+
+.botoes_turmas a:visited {
+    color: black;
+}
+
+.botoes_turmas a:hover {
+    color: rgb(67, 67, 67);
+}
+
+
 .botoes_turmas button{
     width: 80%;
     margin: 10px auto;
@@ -267,7 +310,7 @@ section{
 }
 
 #nomes_alunos button:hover{
-    background-color: rgb(48, 152, 205);
+    background-color: var(--cor-principalHover);
     transform: scale(1.05);
 }
 
@@ -374,6 +417,97 @@ section{
     border-radius: 10px;
 }
 
+/*Parte dinamica*/
+
+#nomes_alunos,
+#informacoes_alunos,
+#notas_alunos {
+    display: none;
+}
+
+#conteudo-inicial {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* substitui necessidade de ajustes de margem */
+    box-sizing: border-box;
+}
+
+.informacoes_site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: 100%;
+    min-height: 120px; /* melhor que height % */
+    margin: 15px 0;
+
+    box-sizing: border-box;
+    border: 1px solid var(--cor-principal);
+    border-radius: 20px; /* mais estável */
+    background-color: var(--cor-principal);
+
+    font-size: 30px;
+    color: white;
+    overflow: hidden;
+}
+
+.informacoes_site p {
+    flex: 1;
+    text-align: left;
+}
+
+.informacoes_site img {
+    width: 40%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.informacoes_site {
+    transition: 0.3s;
+}
+
+.informacoes_site:hover {
+    transform: scale(1.02);
+}
+
+/*Responsividade parte dinamica*/
+
+@media (max-width: 768px) {
+
+    .informacoes_site {
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .informacoes_site p {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .informacoes_site img {
+        width: 100%;
+        max-width: 250px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .informacoes_site {
+        font-size: 16px;
+    }
+
+    .informacoes_site img {
+        max-width: 200px;
+    }
+}
+
+/*Responsividade restante do site*/
 
 @media (max-width: 900px) {
 
