@@ -1,0 +1,58 @@
+{
+  "general": {
+    "report_title": "Relatório de Desempenho - Desafio Web",
+    "show_score": true,
+    "show_passed_tests": true,
+    "add_report_summary": true,
+    "online_content": [
+      {
+        "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/img",
+        "description": "Guia completo sobre como usar o atributo 'alt' em imagens para acessibilidade.",
+        "linked_tests": [
+          "check_all_images_have_alt"
+        ]
+      },
+      {
+        "url": "https://www.w3schools.com/css/css3_mediaqueries.asp",
+        "description": "Um tutorial sobre Media Queries para criar layouts responsivos.",
+        "linked_tests": [
+          "check_has_media_queries"
+        ]
+      },
+      {
+        "url": "https://developer.mozilla.org/pt-BR/docs/Web/Guide/HTML/HTML5",
+        "description": "Documentação geral sobre HTML5.",
+        "linked_tests": [
+          "has_tag",
+          "has_structure"
+        ]
+      },
+      {
+        "url":"https://getbootstrap.com/docs/4.1/getting-started/introduction/",
+        "description": "Documentação oficial do Bootstrap",
+        "linked_tests": [
+          "check_bootstrap_linked",
+          "has_class"
+        ]
+      }
+    ]
+  },
+  "ai": {
+    "provide_solutions": "hint",
+    "feedback_tone": "amigável, encorajador e direto ao ponto",
+    "feedback_persona": "Code Buddy, um colega programador mais experiente que está me ajudando a melhorar",
+    "assignment_context": "O objetivo desta atividade é criar uma página de portfólio pessoal utilizando HTML semântico e CSS, com foco em um design limpo e responsivo. O aluno deve demonstrar proficiência em estruturação de layout com Flexbox ou Grid.",
+    "extra_orientations": "Por favor, foque a análise nos seguintes pontos: 1. A correta utilização de tags semânticas como <header>, <nav>, <main>, <section> e <footer>. 2. A implementação de media queries para garantir que o layout se adapte a telas de celular. 3. Evitar o uso de seletores de CSS muito específicos ou o uso de !important.",
+    "submission_files_to_read": [
+      "index.html",
+      "css/styles.css"
+    ]
+  },
+  "default": {
+    "category_headers": {
+      "base": "✅ Requisitos Essenciais",
+      "bonus": "⭐ Pontos Extras e Boas Práticas",
+      "penalty": "🚨 Pontos de Atenção e Más Práticas"
+    }
+  }
+}
