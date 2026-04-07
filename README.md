@@ -13,7 +13,7 @@ Nessa atividade, você deverá montar a página inicial do projeto escolhido, a 
 - Nome: Bruno Henrique Fernandes Jardim
 - Matricula:
 - Proposta de projeto escolhida: Escolas e turmas
-- Breve descrição sobre seu projeto: Site para consultar quais alunos estão matriculados na escola com suas respectivas informações.
+- Breve descrição sobre seu projeto: Site para consultar quais alunos estão matriculados na escola com suas respectivas informações como notas, nome, email, materia destaque.
 
 
 ## Print do(s) wireframe(s) criado
