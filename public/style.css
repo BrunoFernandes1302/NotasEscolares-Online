@@ -1,0 +1,738 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --cor-principal:rgb(55, 88, 104); 
+    --cor-principalHover:  rgb(48, 152, 205);
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    background-color: var(--cor-principal);
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+header, main, nav, section, footer{
+    background-color: rgb(250, 249, 249);
+}
+
+header{
+    min-height: 15%;
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+main{
+    min-height: 70%;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+footer{
+    min-height: 5%;
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+
+/* Cabeçalho */
+
+.img_cabecalho{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo_cabecalho{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    text-align: left;
+    align-items: center;
+}
+
+/* Conteúdo Principal */
+
+nav{
+    margin: 2% 1% 2% 2%;
+    height: 96%;
+    width: 27%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+section{
+    border: 1px solid var(--cor-principal);
+    margin: 2% 2% 2% 1%;
+    height: 96%;
+    width: 67%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Rodapé */
+
+.texto_rodape{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
+}
+
+.texto_rodape p{
+    font-size: 26px;
+}
+
+.direito_rodape{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#copyright{
+    position: flex;
+    bottom: 15px;
+    right: 15px;
+    height: 20%;
+}
+
+.icons_redes{
+    margin: 0   10px;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.icons_redes a{
+    font-size: 20px;
+    color: var(--cor-principal);
+}
+
+.icons_redes a:hover{
+    font-size: 20px;
+    color: var(--cor-principalHover);
+}
+
+.icons_redes a:active{
+    font-size: 20px;
+    color: var(--cor-principal);
+}
+
+/* Espaço de pesquisa (nav - pesquisa) */
+
+#form_pesquisa{
+    min-height: 30%;
+    background-color: var(--cor-principal);
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#form_pesquisa form{
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.caixinhas_input label{
+    width: 150px;
+}
+
+.caixinhas_input input{
+    flex: 1;    
+    height: 30px;
+}
+
+.caixinhas_input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+#form_pesquisa button{
+    height: 40px;
+    width: 100px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: none;
+    border-radius: 8px;
+}
+
+#form_pesquisa button:active{
+    transform: scale(0.95);
+}
+ 
+.botoes{
+    display: flex;
+    justify-content: flex-end; 
+    gap: 10px;  
+}
+
+#botao_pesquisar{
+    background:linear-gradient(135deg,#4CAF50, #2E7D32);
+}
+
+#botao_pesquisar:hover{
+    background-color: #45A049;
+    transform: scale(1.05);
+}
+
+#botao_limpar{
+    background-color: #F1F1F1;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+#botao_limpar:hover{
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+/* Espaço de pesquisa (nav - turmas) */
+
+#select_ano{
+    flex: 1;
+    background-color: var(--cor-principal);
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-top: 10px;
+    overflow-y:auto;
+    min-height: 0;
+}
+
+#select_ano::-webkit-scrollbar {
+    width: 8px;
+}
+
+#select_ano::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.botoes_turmas{
+    display: flex;
+}
+
+.botoes_turmas a{
+    text-decoration: none;
+}
+
+.botoes_turmas a:link {
+    color: black;
+}
+
+.botoes_turmas a:visited {
+    color: black;
+}
+
+.botoes_turmas a:hover {
+    color: rgb(67, 67, 67);
+}
+
+
+.botoes_turmas button{
+    width: 80%;
+    margin: 10px auto;
+    font-size: 25px;
+    border-radius: 8px;
+    border: none;
+    background:linear-gradient(10deg,#6f726f, #ffffff);
+}
+
+.botoes_turmas button:hover{
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+.botoes_turmas button:active{
+    transform: scale(0.95);
+}
+
+/* Conteudo principal */
+
+#nomes_alunos{
+    height: 10%;
+    overflow-x: auto;
+    width:100%;
+    min-width: 0;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#nomes_alunos button{
+    width: 20%;
+    margin: 10px 10px;
+    flex: 0 0 auto;
+    color: white;
+    font-size: 25px;
+    border-radius: 8px;
+    border: none;
+    background:var(--cor-principal);
+}
+
+#nomes_alunos::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+#nomes_alunos::-webkit-scrollbar-thumb {
+    background: var(--cor-principal);
+    border-radius: 10px;
+}
+
+#nomes_alunos button:hover{
+    background-color: var(--cor-principalHover);
+    transform: scale(1.05);
+}
+
+#nomes_alunos button:active{
+    transform: scale(0.95);
+}
+
+#informacoes_alunos{
+
+    height: 40%;
+    display: flex;
+}
+
+.espaco_foto{
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;   
+    justify-content: center;
+}
+
+.espaco_foto img{
+    width: 90%;
+    height: 100%;
+    border: 1px solid var(--cor-principal);
+    display: block;
+    object-fit: cover;
+}
+
+.espaco_informacoes{
+    box-sizing: border-box;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+}
+
+.linha_informacao{
+    display: flex;
+    gap: 16px
+}
+
+.conteiner_informacao{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 4;
+}
+
+.espaco_informacoes label{
+    color: var(--cor-principal);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.espaco_informacoes span {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#notas_alunos{
+    border: 1px solid black;
+    height: 50%;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    gap: 14px;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.conteiner_informacao label{
+    color: var(--cor-principal);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.conteiner_informacao span {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#notas_alunos::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+#notas_alunos::-webkit-scrollbar-thumb {
+    background: var(--cor-principal);
+    border-radius: 10px;
+}
+
+/*Parte dinamica*/
+
+#nomes_alunos,
+#informacoes_alunos,
+#notas_alunos {
+    display: none;
+}
+
+#conteudo-inicial {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* substitui necessidade de ajustes de margem */
+    box-sizing: border-box;
+}
+
+.informacoes_site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: 100%;
+    min-height: 120px; /* melhor que height % */
+    margin: 15px 0;
+
+    box-sizing: border-box;
+    border: 1px solid var(--cor-principal);
+    border-radius: 20px; /* mais estável */
+    background-color: var(--cor-principal);
+
+    font-size: 30px;
+    color: white;
+    overflow: hidden;
+}
+
+.informacoes_site p {
+    flex: 1;
+    text-align: left;
+}
+
+.informacoes_site img {
+    width: 40%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.informacoes_site {
+    transition: 0.3s;
+}
+
+.informacoes_site:hover {
+    transform: scale(1.02);
+}
+
+/*Responsividade parte dinamica*/
+
+@media (max-width: 768px) {
+
+    .informacoes_site {
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .informacoes_site p {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .informacoes_site img {
+        width: 100%;
+        max-width: 250px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .informacoes_site {
+        font-size: 16px;
+    }
+
+    .informacoes_site img {
+        max-width: 200px;
+    }
+}
+
+/*Responsividade restante do site*/
+
+@media (max-width: 900px) {
+
+    body {
+        height: auto;
+        min-height: 100vh;
+        gap: 8px;
+    }
+
+    header, main, footer {
+        width: 95%;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: auto;
+        padding: 8px 0;
+    }
+
+    nav {
+        width: calc(100% - 4%);
+        height: auto;
+        margin: 1% 2%;
+        min-height: 200px;
+    }
+
+    section {
+        width: calc(100% - 4%);
+        height: auto;
+        margin: 1% 2%;
+        min-height: 400px;
+    }
+
+    #informacoes_alunos {
+        height: auto;
+        flex-direction: row;
+    }
+
+    .espaco_foto {
+        width: 25%;
+    }
+
+    .espaco_informacoes {
+        width: 75%;
+    }
+
+    #notas_alunos {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .botoes_turmas button {
+        font-size: 18px;
+    }
+
+    #nomes_alunos button {
+        font-size: 18px;
+    }
+
+    .texto_rodape p {
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        gap: 6px;
+    }
+
+    header, main, footer {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    header {
+        flex-direction: column;
+        min-height: auto;
+        padding: 10px;
+    }
+
+    .img_cabecalho {
+        width: 100%;
+        height: 80px;
+        justify-content: flex-start;
+    }
+
+    .titulo_cabecalho {
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        text-align: center;
+        padding: 6px 0;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+    }
+
+    nav {
+        width: 100%;
+        height: auto;
+        margin: 6px 0;
+        border-radius: 0;
+    }
+
+    section {
+        width: 100%;
+        height: auto;
+        margin: 6px 0;
+        border-radius: 0;
+        min-height: 60vh;
+    }
+
+    #form_pesquisa form {
+        font-size: 16px;
+    }
+
+    .caixinhas_input {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .caixinhas_input label {
+        width: 100%;
+    }
+
+    .caixinhas_input input {
+        width: 100%;
+    }
+
+    #form_pesquisa button {
+        width: 90px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .botoes_turmas button {
+        font-size: 16px;
+        padding: 6px;
+    }
+
+    #nomes_alunos {
+        height: auto;
+        min-height: 60px;
+    }
+
+    #nomes_alunos button {
+        font-size: 14px;
+        width: auto;
+        min-width: 100px;
+        padding: 0 10px;
+    }
+
+    #informacoes_alunos {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .espaco_foto {
+        width: 100%;
+        height: 180px;
+    }
+
+    .espaco_foto img {
+        width: 160px;
+        height: 160px;
+        border-radius: 8px;
+    }
+
+    .espaco_informacoes {
+        width: 100%;
+        height: auto;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .espaco_informacoes label,
+    .conteiner_informacao label {
+        font-size: 15px;
+    }
+
+    .linha_informacao {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #notas_alunos {
+        height: auto;
+        min-height: 150px;
+        padding: 12px;
+    }
+
+    footer {
+        flex-direction: column;
+        min-height: auto;
+        padding: 10px 0;
+    }
+
+    .texto_rodape {
+        width: 100%;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .texto_rodape p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .direito_rodape {
+        width: 100%;
+        justify-content: center;
+        min-height: 40px;
+    }
+
+    #copyright {
+        position: static;
+        text-align: center;
+        padding: 4px 0;
+        font-size: 12px;
+    }
+}
