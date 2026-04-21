@@ -215,6 +215,98 @@
         </div>
     </footer>
 
+<div id="modal_aluno" class="modal_overlay">
+    <div class="modal_conteudo">
+        <div class="modal_header">
+            <h2 id="modal_titulo">Adicionar Aluno</h2>
+        </div>
+        <div class="modal_body">
+            <div class="modal_secao">
+                <h3>Informações Pessoais</h3>
+                <div class="modal_grid">
+                    <div class="modal_campo">
+                        <label>Nome (botão):</label>
+                        <input type="text" id="m_nome" placeholder="Ex: Carlos">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Nome Completo:</label>
+                        <input type="text" id="m_nomeCompleto" placeholder="Ex: Carlos Eduardo da Silva">
+                    </div>
+                    <div class="modal_campo">
+                        <label>CPF:</label>
+                        <input type="text" id="m_cpf" placeholder="000.000.000-00">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Matrícula:</label>
+                        <input type="text" id="m_matricula" placeholder="12345678">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Email:</label>
+                        <input type="text" id="m_email" placeholder="email@gmail.com">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Média Geral (calculada):</label>
+                        <input type="number" id="m_media" min="0" max="10" step="0.1" placeholder="—" readonly>
+                    </div>
+                    <div class="modal_campo modal_campo_largo">
+                        <label>Matéria Destaque:</label>
+                        <input type="text" id="m_destaque" placeholder="Ex: Matemática">
+                    </div>
+                </div>
+            </div>
+            <div class="modal_secao">
+                <h3>Notas</h3>
+                <div class="modal_grid">
+                    <div class="modal_campo">
+                        <label>Matemática:</label>
+                        <input type="number" id="m_matematica" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Língua Portuguesa:</label>
+                        <input type="number" id="m_portugues" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>História:</label>
+                        <input type="number" id="m_historia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Geografia:</label>
+                        <input type="number" id="m_geografia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Física:</label>
+                        <input type="number" id="m_fisica" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Biologia:</label>
+                        <input type="number" id="m_biologia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Filosofia:</label>
+                        <input type="number" id="m_filosofia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Sociologia:</label>
+                        <input type="number" id="m_sociologia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Língua Inglesa:</label>
+                        <input type="number" id="m_ingles" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                    <div class="modal_campo">
+                        <label>Redação:</label>
+                        <input type="number" id="m_redacao" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal_rodape">
+            <button id="btn_salvar_modal" onclick="salvarAluno()">Salvar</button>
+            <button id="btn_cancelar_modal" onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>

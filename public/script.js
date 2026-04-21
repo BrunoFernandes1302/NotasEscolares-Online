@@ -388,11 +388,12 @@ const turmas = {
     ]
 };
 
+let modalTurma = null;
+let modalIndex = null;
+
 function carregarTurma(turma) {
     document.getElementById("conteudo-inicial").style.display = "none";
-
-    // ✅ Mostra as seções que ficam escondidas
-    document.getElementById("nomes_alunos").style.display = "flex"; 
+    document.getElementById("nomes_alunos").style.display = "flex";
     document.getElementById("informacoes_alunos").style.display = "flex";
     document.getElementById("notas_alunos").style.display = "flex";
 
@@ -404,15 +405,263 @@ function carregarTurma(turma) {
         return;
     }
 
+    turmas[turma].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+
     turmas[turma].forEach((aluno, index) => {
-        const btn = document.createElement("button");
-        btn.textContent = aluno.nome;
-        btn.onclick = () => mostrarAluno(aluno);
-        container.appendChild(btn);
+        const item = document.createElement("div");
+        item.className = "aluno_item";
+
+        const btnNome = document.createElement("button");
+        btnNome.className = "btn_nome";
+        btnNome.textContent = aluno.nome;
+        btnNome.onclick = () => mostrarAluno(aluno);
+
+        const acoes = document.createElement("div");
+        acoes.className = "aluno_acoes";
+
+        const btnEditar = document.createElement("button");
+        btnEditar.className = "btn_editar";
+        btnEditar.textContent = "✏ Editar";
+        btnEditar.onclick = () => abrirModalEditar(turma, index);
+
+        const btnExcluir = document.createElement("button");
+        btnExcluir.className = "btn_excluir";
+        btnExcluir.textContent = "🗑 Excluir";
+        btnExcluir.onclick = () => excluirAluno(turma, index);
+
+        acoes.appendChild(btnEditar);
+        acoes.appendChild(btnExcluir);
+        item.appendChild(btnNome);
+        item.appendChild(acoes);
+        container.appendChild(item);
 
         if (index === 0) mostrarAluno(aluno);
     });
+
+    const btnAdicionar = document.createElement("button");
+    btnAdicionar.className = "btn_adicionar_aluno";
+    btnAdicionar.textContent = "+ Adicionar Aluno";
+    btnAdicionar.onclick = () => abrirModalAdicionar(turma);
+    container.appendChild(btnAdicionar);
+
+    const temAlunos = turmas[turma].length > 0;
+    document.getElementById("informacoes_alunos").style.display = temAlunos ? "flex" : "none";
+    document.getElementById("notas_alunos").style.display = temAlunos ? "flex" : "none";
 }
+
+function excluirAluno(turma, index) {
+    const aluno = turmas[turma][index];
+    if (!confirm(`Deseja excluir o aluno "${aluno.nomeCompleto}"?`)) return;
+
+    turmas[turma].splice(index, 1);
+    carregarTurma(turma);
+}
+
+function abrirModalAdicionar(turma) {
+    modalTurma = turma;
+    modalIndex = null;
+
+    document.getElementById("modal_titulo").textContent = "Adicionar Aluno — Turma " + turma;
+
+    const campos = ["nome","nomeCompleto","cpf","matricula","email","media","destaque",
+                    "matematica","portugues","historia","geografia","fisica",
+                    "biologia","filosofia","sociologia","ingles","redacao"];
+    campos.forEach(c => { document.getElementById("m_" + c).value = ""; });
+
+    document.getElementById("modal_aluno").classList.add("ativo");
+}
+
+function abrirModalEditar(turma, index) {
+    modalTurma = turma;
+    modalIndex = index;
+
+    const aluno = turmas[turma][index];
+    document.getElementById("modal_titulo").textContent = "Editar Aluno — " + aluno.nomeCompleto;
+
+    document.getElementById("m_nome").value = aluno.nome;
+    document.getElementById("m_nomeCompleto").value = aluno.nomeCompleto;
+    document.getElementById("m_cpf").value = aluno.cpf;
+    document.getElementById("m_matricula").value = aluno.matricula;
+    document.getElementById("m_email").value = aluno.email;
+    document.getElementById("m_media").value = aluno.media;
+    document.getElementById("m_destaque").value = aluno.destaque;
+
+    document.getElementById("m_matematica").value = aluno.notas.matematica;
+    document.getElementById("m_portugues").value = aluno.notas.portugues;
+    document.getElementById("m_historia").value = aluno.notas.historia;
+    document.getElementById("m_geografia").value = aluno.notas.geografia;
+    document.getElementById("m_fisica").value = aluno.notas.fisica;
+    document.getElementById("m_biologia").value = aluno.notas.biologia;
+    document.getElementById("m_filosofia").value = aluno.notas.filosofia;
+    document.getElementById("m_sociologia").value = aluno.notas.sociologia;
+    document.getElementById("m_ingles").value = aluno.notas.ingles;
+    document.getElementById("m_redacao").value = aluno.notas.redacao;
+    atualizarMediaModal();
+
+    document.getElementById("modal_aluno").classList.add("ativo");
+}
+
+function fecharModal() {
+    document.getElementById("modal_aluno").classList.remove("ativo");
+    modalTurma = null;
+    modalIndex = null;
+}
+
+const CAMPOS_NOTAS = ["matematica","portugues","historia","geografia","fisica",
+                      "biologia","filosofia","sociologia","ingles","redacao"];
+
+function atualizarMediaModal() {
+    let soma = 0;
+    CAMPOS_NOTAS.forEach(c => {
+        const val = parseFloat(document.getElementById("m_" + c).value);
+        soma += isNaN(val) ? 0 : val;
+    });
+    document.getElementById("m_media").value = (soma / CAMPOS_NOTAS.length).toFixed(1);
+}
+
+function salvarAluno() {
+    const nome = document.getElementById("m_nome").value.trim();
+    const nomeCompleto = document.getElementById("m_nomeCompleto").value.trim();
+
+    if (!nome || !nomeCompleto) {
+        alert("Os campos Nome e Nome Completo são obrigatórios.");
+        return;
+    }
+
+    const fotoAtual = modalIndex !== null ? turmas[modalTurma][modalIndex].foto : "imagens/foto_de_homem_generica.png";
+
+    const notas = {
+        matematica: document.getElementById("m_matematica").value.trim(),
+        portugues:  document.getElementById("m_portugues").value.trim(),
+        historia:   document.getElementById("m_historia").value.trim(),
+        geografia:  document.getElementById("m_geografia").value.trim(),
+        fisica:     document.getElementById("m_fisica").value.trim(),
+        biologia:   document.getElementById("m_biologia").value.trim(),
+        filosofia:  document.getElementById("m_filosofia").value.trim(),
+        sociologia: document.getElementById("m_sociologia").value.trim(),
+        ingles:     document.getElementById("m_ingles").value.trim(),
+        redacao:    document.getElementById("m_redacao").value.trim()
+    };
+
+    let soma = 0;
+    CAMPOS_NOTAS.forEach(c => { soma += parseFloat(notas[c]) || 0; });
+    const mediaCalculada = (soma / CAMPOS_NOTAS.length).toFixed(1);
+
+    const aluno = {
+        nome,
+        nomeCompleto,
+        cpf:       document.getElementById("m_cpf").value.trim(),
+        matricula: document.getElementById("m_matricula").value.trim(),
+        email:     document.getElementById("m_email").value.trim(),
+        media:     mediaCalculada,
+        destaque:  document.getElementById("m_destaque").value.trim(),
+        foto:      fotoAtual,
+        notas
+    };
+
+    const turma = modalTurma;
+    const idx = modalIndex;
+
+    let indexToShow;
+    if (idx === null) {
+        turmas[turma].push(aluno);
+        indexToShow = turmas[turma].length - 1;
+    } else {
+        turmas[turma][idx] = aluno;
+        indexToShow = idx;
+    }
+
+    fecharModal();
+    carregarTurma(turma);
+    mostrarAluno(turmas[turma][indexToShow]);
+}
+
+document.getElementById("modal_aluno").addEventListener("click", function(e) {
+    if (e.target === this) fecharModal();
+});
+
+function pesquisarAlunos(e) {
+    e.preventDefault();
+
+    const termNome  = document.getElementById("nome_aluno").value.trim().toLowerCase();
+    const termCpf   = document.getElementById("cpf_input").value.trim();
+    const termEmail = document.getElementById("email_input").value.trim().toLowerCase();
+
+    if (!termNome && !termCpf && !termEmail) {
+        alert("Digite pelo menos um critério de pesquisa.");
+        return;
+    }
+
+    const resultados = [];
+
+    for (const turma in turmas) {
+        turmas[turma].forEach((aluno, index) => {
+            const matchNome  = !termNome  || aluno.nomeCompleto.toLowerCase().includes(termNome)
+                                          || aluno.nome.toLowerCase().includes(termNome);
+            const matchCpf   = !termCpf   || aluno.cpf.includes(termCpf);
+            const matchEmail = !termEmail || aluno.email.toLowerCase().includes(termEmail);
+
+            if (matchNome && matchCpf && matchEmail) {
+                resultados.push({ turma, index, aluno });
+            }
+        });
+    }
+
+    exibirResultados(resultados);
+}
+
+function exibirResultados(resultados) {
+    document.getElementById("conteudo-inicial").style.display = "none";
+    document.getElementById("nomes_alunos").style.display = "flex";
+
+    const container = document.getElementById("nomes_alunos");
+    container.innerHTML = "";
+
+    if (resultados.length === 0) {
+        const msg = document.createElement("p");
+        msg.textContent = "Nenhum aluno encontrado.";
+        msg.style.cssText = "padding: 16px 20px; color: var(--cor-principal); font-size: 16px; align-self: center;";
+        container.appendChild(msg);
+        document.getElementById("informacoes_alunos").style.display = "none";
+        document.getElementById("notas_alunos").style.display = "none";
+        return;
+    }
+
+    resultados.forEach(({ turma, index, aluno }) => {
+        const item = document.createElement("div");
+        item.className = "aluno_item";
+
+        const btnNome = document.createElement("button");
+        btnNome.className = "btn_nome";
+        btnNome.textContent = aluno.nome + " (" + turma + ")";
+        btnNome.onclick = () => mostrarAluno(aluno);
+
+        const acoes = document.createElement("div");
+        acoes.className = "aluno_acoes";
+
+        const btnEditar = document.createElement("button");
+        btnEditar.className = "btn_editar";
+        btnEditar.textContent = "✏ Editar";
+        btnEditar.onclick = () => abrirModalEditar(turma, index);
+
+        const btnExcluir = document.createElement("button");
+        btnExcluir.className = "btn_excluir";
+        btnExcluir.textContent = "🗑 Excluir";
+        btnExcluir.onclick = () => excluirAluno(turma, index);
+
+        acoes.appendChild(btnEditar);
+        acoes.appendChild(btnExcluir);
+        item.appendChild(btnNome);
+        item.appendChild(acoes);
+        container.appendChild(item);
+    });
+
+    document.getElementById("informacoes_alunos").style.display = "flex";
+    document.getElementById("notas_alunos").style.display = "flex";
+    mostrarAluno(resultados[0].aluno);
+}
+
+document.querySelector("#form_pesquisa form").addEventListener("submit", pesquisarAlunos);
 
 function mostrarAluno(aluno) {
     // Informações básicas
