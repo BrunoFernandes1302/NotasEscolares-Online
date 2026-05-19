@@ -9,7 +9,8 @@
 - Breve descrição sobre seu projeto: Site para consultar quais alunos estão matriculados na escola com suas respectivas informações como notas, nome, email, materia destaque.
 
 
-## Print da pagina versão DESKTOP 
+![alt text](public/imagens/botao_ver_mais.png)
 
+![alt text](public/imagens/query_string.png)
 
-## Print da pagina versão MOBILE 
+![alt text](public/imagens/json.png)

@@ -82,6 +82,8 @@ section{
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
 }
 
 
@@ -280,36 +282,73 @@ section{
 /* Conteudo principal */
 
 #nomes_alunos{
-    min-height: 85px;
-    height: auto;
-    overflow-x: auto;
-    width:100%;
-    min-width: 0;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
     display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .aluno_item {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    flex: 0 0 auto;
-    gap: 4px;
-    margin: 8px 6px;
-    min-width: 120px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.15s ease;
 }
 
-.aluno_item .btn_nome {
-    color: white;
-    font-size: 20px;
-    border-radius: 8px;
-    border: none;
-    background: var(--cor-principal);
-    padding: 7px 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+.aluno_item:hover {
+    background-color: #f5f8fa;
+}
+
+.aluno_info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 3px;
+    min-width: 0;
+}
+
+.aluno_nome_completo {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--cor-principal);
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.aluno_matricula_txt {
+    font-size: 12px;
+    color: #777;
+}
+
+.btn_ver_mais {
+    padding: 6px 14px;
+    background: var(--cor-principal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.btn_ver_mais:hover {
+    background: var(--cor-principalHover);
+    transform: scale(1.05);
+}
+
+.btn_ver_mais:active {
+    transform: scale(0.95);
 }
 
 .aluno_acoes {
@@ -350,19 +389,17 @@ section{
 }
 
 .btn_adicionar_aluno {
-    flex: 0 0 auto;
-    margin: 8px 6px;
-    padding: 7px 14px;
-    font-size: 18px;
+    margin: 10px 14px;
+    padding: 10px;
+    font-size: 15px;
     border-radius: 8px;
     border: none;
     background: linear-gradient(135deg, #4CAF50, #2E7D32);
     color: white;
     cursor: pointer;
-    align-self: flex-start;
     transition: all 0.2s ease;
-    white-space: nowrap;
     font-weight: bold;
+    align-self: stretch;
 }
 
 #nomes_alunos::-webkit-scrollbar {
@@ -375,15 +412,6 @@ section{
     border-radius: 10px;
 }
 
-.aluno_item .btn_nome:hover{
-    background-color: var(--cor-principalHover);
-    transform: scale(1.05);
-}
-
-.aluno_item .btn_nome:active{
-    transform: scale(0.95);
-}
-
 .btn_adicionar_aluno:hover {
     transform: scale(1.05);
 }
@@ -393,8 +421,8 @@ section{
 }
 
 #informacoes_alunos{
-
-    height: 40%;
+    height: auto;
+    flex-shrink: 0;
     display: flex;
 }
 
@@ -457,12 +485,12 @@ section{
 #notas_alunos{
     border: 1px solid black;
     flex: 1;
+    min-height: 0;
     display: flex;
     padding: 16px;
     flex-direction: column;
     gap: 14px;
     box-sizing: border-box;
-    overflow: hidden;
     overflow-y: auto;
 }
 
@@ -631,15 +659,18 @@ section{
     color: var(--cor-principal);
 }
 
-.modal_campo input {
+.modal_campo input,
+.modal_campo select {
     padding: 6px 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
     box-sizing: border-box;
+    background-color: white;
 }
 
-.modal_campo input:focus {
+.modal_campo input:focus,
+.modal_campo select:focus {
     outline: none;
     border-color: var(--cor-principal);
 }
@@ -687,6 +718,51 @@ section{
 #btn_cancelar_modal:hover {
     background: #ddd;
     transform: scale(1.05);
+}
+
+.modal_foto_container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.modal_foto_container img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.modal_foto_acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal_foto_acoes input[type="file"] {
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#btn_remover_foto {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+}
+
+#btn_remover_foto:hover {
+    background: #d9534f;
+    color: white;
+    border-color: #d9534f;
 }
 
 /*Responsividade parte dinamica*/
@@ -869,14 +945,13 @@ section{
         padding: 6px;
     }
 
-    #nomes_alunos {
-        min-height: 80px;
+    .aluno_nome_completo {
+        font-size: 13px;
     }
 
-    .aluno_item .btn_nome {
-        font-size: 14px;
-        min-width: 90px;
-        padding: 5px 8px;
+    .aluno_acoes {
+        flex-direction: column;
+        gap: 4px;
     }
 
     .modal_grid {
@@ -955,4 +1030,128 @@ section{
         padding: 4px 0;
         font-size: 12px;
     }
+}
+
+/* ===== Página de Detalhes ===== */
+
+body.pagina_detalhes {
+    height: auto;
+    min-height: 100vh;
+}
+
+body.pagina_detalhes header {
+    min-height: auto;
+    padding: 10px 0;
+}
+
+body.pagina_detalhes main {
+    flex-direction: column;
+    align-items: stretch;
+    align-content: flex-start;
+    min-height: 0;
+    height: auto;
+}
+
+#secao_detalhes {
+    width: 100%;
+    margin: 0;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+#detalhe_cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: var(--cor-principal);
+    color: white;
+    flex-shrink: 0;
+    border-radius: 10px;
+}
+
+#detalhe_turma {
+    font-size: 16px;
+    font-weight: bold;
+    flex: 1;
+}
+
+.detalhe_acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.btn_voltar {
+    padding: 6px 14px;
+    background: white;
+    color: var(--cor-principal);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn_voltar:hover {
+    background: var(--cor-principalHover);
+    color: white;
+    transform: scale(1.05);
+}
+
+.btn_editar_detalhe {
+    padding: 6px 14px;
+    background: #f0ad4e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn_editar_detalhe:hover {
+    background: #ec971f;
+    transform: scale(1.05);
+}
+
+.btn_excluir_detalhe {
+    padding: 6px 14px;
+    background: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn_excluir_detalhe:hover {
+    background: #c9302c;
+    transform: scale(1.05);
+}
+
+#secao_detalhes #informacoes_alunos,
+#secao_detalhes #notas_alunos {
+    display: flex !important;
+    border: 1px solid var(--cor-principal);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#secao_detalhes #notas_alunos {
+    flex: none;
+    height: auto;
+    overflow-y: visible;
 }

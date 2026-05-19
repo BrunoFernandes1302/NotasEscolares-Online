@@ -312,6 +312,17 @@ const turmas = {
             destaque: "Sociologia",
             foto: "imagens/foto_de_homem_generica.png",
             notas: { matematica:"6", portugues:"7", historia:"6", geografia:"7", fisica:"6", biologia:"7", filosofia:"7", sociologia:"9", ingles:"6", redacao:"7"}
+        },
+        {
+            nome: "João Aguiar",
+            nomeCompleto: "João Pedro Aguiar",
+            cpf: "333.666.999-11",
+            matricula: "909090",
+            email: "joao2c@gmail.com",
+            media: "6.9",
+            destaque: "Sociologia",
+            foto: "imagens/foto_de_homem_generica.png",
+            notas: { matematica:"6", portugues:"7", historia:"6", geografia:"7", fisica:"6", biologia:"7", filosofia:"7", sociologia:"9", ingles:"6", redacao:"7"}
         }
     ],
 
@@ -388,16 +399,103 @@ const turmas = {
     ]
 };
 
+const FOTO_MASCULINO = "imagens/foto_de_homem_generica.png";
+const FOTO_FEMININO  = "imagens/foto_mulher_generica.png";
+
+const NOMES_FEMININOS = new Set([
+    "Ana","Mariana","Juliana","Fernanda","Larissa","Camila","Patricia","Beatriz",
+    "Sofia","Aline","Amanda","Bruna","Carolina","Daniela","Elisa","Gabriela",
+    "Isabela","Joana","Katia","Leticia","Monica","Natalia","Olivia","Paula",
+    "Renata","Sabrina","Tatiana","Vanessa","Yasmin","Maria","Clara","Alice",
+    "Livia","Luisa","Rita","Sandra","Vera","Angela","Claudia","Cristina",
+    "Debora","Elena","Flavia","Giovanna","Helena","Ingrid","Jessica","Luana",
+    "Melissa","Nina","Rafaela","Silvia","Teresa","Viviane","Wanda","Patrícia",
+    "Júlia","Julia","Laura","Carla","Lara","Nadia","Nádia","Priscila","Roberta",
+    "Samara","Simone","Tania","Tânia","Vitoria","Vitória","Zelia","Zélia"
+]);
+
+function inferirGenero(nome) {
+    const primeiroNome = nome.trim().split(/\s+/)[0];
+    return NOMES_FEMININOS.has(primeiroNome) ? "Feminino" : "Masculino";
+}
+
+// Inicializa genero e foto padrão para todos os alunos existentes
+for (const turma in turmas) {
+    turmas[turma].forEach(aluno => {
+        if (!aluno.genero) {
+            aluno.genero = inferirGenero(aluno.nome);
+        }
+        if (aluno.foto === FOTO_MASCULINO && aluno.genero === "Feminino") {
+            aluno.foto = FOTO_FEMININO;
+        }
+    });
+}
+
 let modalTurma = null;
 let modalIndex = null;
+let modalFotoDataUrl = null;
+
+function voltarInicio() {
+    document.getElementById("conteudo-inicial").style.display = "flex";
+    document.getElementById("nomes_alunos").style.display = "none";
+    document.getElementById("informacoes_alunos").style.display = "none";
+    document.getElementById("notas_alunos").style.display = "none";
+}
+
+function previewFoto(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            modalFotoDataUrl = e.target.result;
+            document.getElementById("m_foto_preview").src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function removerFoto() {
+    modalFotoDataUrl = null;
+    document.getElementById("m_foto").value = "";
+    const genero = document.getElementById("m_genero").value;
+    document.getElementById("m_foto_preview").src = genero === "Feminino" ? FOTO_FEMININO : FOTO_MASCULINO;
+}
+
+function criarItemAluno(aluno, turma) {
+    const item = document.createElement("div");
+    item.className = "aluno_item";
+
+    const info = document.createElement("div");
+    info.className = "aluno_info";
+
+    const nomeEl = document.createElement("span");
+    nomeEl.className = "aluno_nome_completo";
+    nomeEl.textContent = aluno.nomeCompleto;
+
+    const matriculaEl = document.createElement("span");
+    matriculaEl.className = "aluno_matricula_txt";
+    matriculaEl.textContent = "Matrícula: " + aluno.matricula;
+
+    info.appendChild(nomeEl);
+    info.appendChild(matriculaEl);
+
+    const btnVerMais = document.createElement("button");
+    btnVerMais.className = "btn_ver_mais";
+    btnVerMais.textContent = "Ver mais →";
+    btnVerMais.onclick = () => {
+        window.location.href = `detalhes.html?turma=${turma}&cpf=${encodeURIComponent(aluno.cpf)}`;
+    };
+
+    item.appendChild(info);
+    item.appendChild(btnVerMais);
+    return item;
+}
 
 function carregarTurma(turma) {
-    document.getElementById("conteudo-inicial").style.display = "none";
-    document.getElementById("nomes_alunos").style.display = "flex";
-    document.getElementById("informacoes_alunos").style.display = "flex";
-    document.getElementById("notas_alunos").style.display = "flex";
-
     const container = document.getElementById("nomes_alunos");
+    if (!container) return;
+
+    document.getElementById("conteudo-inicial").style.display = "none";
+    container.style.display = "flex";
     container.innerHTML = "";
 
     if (!turmas[turma]) {
@@ -405,48 +503,16 @@ function carregarTurma(turma) {
         return;
     }
 
-    turmas[turma].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
-
-    turmas[turma].forEach((aluno, index) => {
-        const item = document.createElement("div");
-        item.className = "aluno_item";
-
-        const btnNome = document.createElement("button");
-        btnNome.className = "btn_nome";
-        btnNome.textContent = aluno.nome;
-        btnNome.onclick = () => mostrarAluno(aluno);
-
-        const acoes = document.createElement("div");
-        acoes.className = "aluno_acoes";
-
-        const btnEditar = document.createElement("button");
-        btnEditar.className = "btn_editar";
-        btnEditar.textContent = "✏ Editar";
-        btnEditar.onclick = () => abrirModalEditar(turma, index);
-
-        const btnExcluir = document.createElement("button");
-        btnExcluir.className = "btn_excluir";
-        btnExcluir.textContent = "🗑 Excluir";
-        btnExcluir.onclick = () => excluirAluno(turma, index);
-
-        acoes.appendChild(btnEditar);
-        acoes.appendChild(btnExcluir);
-        item.appendChild(btnNome);
-        item.appendChild(acoes);
-        container.appendChild(item);
-
-        if (index === 0) mostrarAluno(aluno);
-    });
-
     const btnAdicionar = document.createElement("button");
     btnAdicionar.className = "btn_adicionar_aluno";
     btnAdicionar.textContent = "+ Adicionar Aluno";
     btnAdicionar.onclick = () => abrirModalAdicionar(turma);
     container.appendChild(btnAdicionar);
 
-    const temAlunos = turmas[turma].length > 0;
-    document.getElementById("informacoes_alunos").style.display = temAlunos ? "flex" : "none";
-    document.getElementById("notas_alunos").style.display = temAlunos ? "flex" : "none";
+    turmas[turma].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+    turmas[turma].forEach(aluno => {
+        container.appendChild(criarItemAluno(aluno, turma));
+    });
 }
 
 function excluirAluno(turma, index) {
@@ -468,6 +534,12 @@ function abrirModalAdicionar(turma) {
                     "biologia","filosofia","sociologia","ingles","redacao"];
     campos.forEach(c => { document.getElementById("m_" + c).value = ""; });
 
+    document.getElementById("m_genero").value = "Masculino";
+
+    modalFotoDataUrl = null;
+    document.getElementById("m_foto").value = "";
+    document.getElementById("m_foto_preview").src = FOTO_MASCULINO;
+
     document.getElementById("modal_aluno").classList.add("ativo");
 }
 
@@ -485,6 +557,7 @@ function abrirModalEditar(turma, index) {
     document.getElementById("m_email").value = aluno.email;
     document.getElementById("m_media").value = aluno.media;
     document.getElementById("m_destaque").value = aluno.destaque;
+    document.getElementById("m_genero").value = aluno.genero || inferirGenero(aluno.nome);
 
     document.getElementById("m_matematica").value = aluno.notas.matematica;
     document.getElementById("m_portugues").value = aluno.notas.portugues;
@@ -497,6 +570,10 @@ function abrirModalEditar(turma, index) {
     document.getElementById("m_ingles").value = aluno.notas.ingles;
     document.getElementById("m_redacao").value = aluno.notas.redacao;
     atualizarMediaModal();
+
+    modalFotoDataUrl = null;
+    document.getElementById("m_foto").value = "";
+    document.getElementById("m_foto_preview").src = aluno.foto || "imagens/foto_de_homem_generica.png";
 
     document.getElementById("modal_aluno").classList.add("ativo");
 }
@@ -528,7 +605,10 @@ function salvarAluno() {
         return;
     }
 
-    const fotoAtual = modalIndex !== null ? turmas[modalTurma][modalIndex].foto : "imagens/foto_de_homem_generica.png";
+    const genero = document.getElementById("m_genero").value;
+    const fotoPadrao = genero === "Feminino" ? FOTO_FEMININO : FOTO_MASCULINO;
+    const fotoAtual = modalFotoDataUrl
+        || (modalIndex !== null ? turmas[modalTurma][modalIndex].foto : fotoPadrao);
 
     const notas = {
         matematica: document.getElementById("m_matematica").value.trim(),
@@ -555,6 +635,7 @@ function salvarAluno() {
         email:     document.getElementById("m_email").value.trim(),
         media:     mediaCalculada,
         destaque:  document.getElementById("m_destaque").value.trim(),
+        genero,
         foto:      fotoAtual,
         notas
     };
@@ -572,11 +653,14 @@ function salvarAluno() {
     }
 
     fecharModal();
-    carregarTurma(turma);
-    mostrarAluno(turmas[turma][indexToShow]);
+    if (document.getElementById("nomes_alunos")) {
+        carregarTurma(turma);
+    } else {
+        mostrarAluno(turmas[turma][indexToShow]);
+    }
 }
 
-document.getElementById("modal_aluno").addEventListener("click", function(e) {
+document.getElementById("modal_aluno")?.addEventListener("click", function(e) {
     if (e.target === this) fecharModal();
 });
 
@@ -620,62 +704,45 @@ function exibirResultados(resultados) {
     if (resultados.length === 0) {
         const msg = document.createElement("p");
         msg.textContent = "Nenhum aluno encontrado.";
-        msg.style.cssText = "padding: 16px 20px; color: var(--cor-principal); font-size: 16px; align-self: center;";
+        msg.style.cssText = "padding: 16px 20px; color: var(--cor-principal); font-size: 16px;";
         container.appendChild(msg);
-        document.getElementById("informacoes_alunos").style.display = "none";
-        document.getElementById("notas_alunos").style.display = "none";
         return;
     }
 
-    resultados.forEach(({ turma, index, aluno }) => {
-        const item = document.createElement("div");
-        item.className = "aluno_item";
-
-        const btnNome = document.createElement("button");
-        btnNome.className = "btn_nome";
-        btnNome.textContent = aluno.nome + " (" + turma + ")";
-        btnNome.onclick = () => mostrarAluno(aluno);
-
-        const acoes = document.createElement("div");
-        acoes.className = "aluno_acoes";
-
-        const btnEditar = document.createElement("button");
-        btnEditar.className = "btn_editar";
-        btnEditar.textContent = "✏ Editar";
-        btnEditar.onclick = () => abrirModalEditar(turma, index);
-
-        const btnExcluir = document.createElement("button");
-        btnExcluir.className = "btn_excluir";
-        btnExcluir.textContent = "🗑 Excluir";
-        btnExcluir.onclick = () => excluirAluno(turma, index);
-
-        acoes.appendChild(btnEditar);
-        acoes.appendChild(btnExcluir);
-        item.appendChild(btnNome);
-        item.appendChild(acoes);
+    resultados.forEach(({ turma, aluno }) => {
+        const item = criarItemAluno(aluno, turma);
+        item.querySelector(".aluno_nome_completo").textContent = aluno.nomeCompleto + " — Turma " + turma;
         container.appendChild(item);
     });
-
-    document.getElementById("informacoes_alunos").style.display = "flex";
-    document.getElementById("notas_alunos").style.display = "flex";
-    mostrarAluno(resultados[0].aluno);
 }
 
-document.querySelector("#form_pesquisa form").addEventListener("submit", pesquisarAlunos);
+document.querySelector("#form_pesquisa form")?.addEventListener("submit", pesquisarAlunos);
+
+document.getElementById("m_nome")?.addEventListener("input", function() {
+    const generoDetectado = inferirGenero(this.value);
+    document.getElementById("m_genero").value = generoDetectado;
+    if (!modalFotoDataUrl) {
+        document.getElementById("m_foto_preview").src = generoDetectado === "Feminino" ? FOTO_FEMININO : FOTO_MASCULINO;
+    }
+});
+
+document.getElementById("m_genero")?.addEventListener("change", function() {
+    if (!modalFotoDataUrl) {
+        document.getElementById("m_foto_preview").src = this.value === "Feminino" ? FOTO_FEMININO : FOTO_MASCULINO;
+    }
+});
 
 function mostrarAluno(aluno) {
-    // Informações básicas
     document.getElementById("nomeCompleto").textContent = aluno.nomeCompleto;
     document.getElementById("cpf").textContent = aluno.cpf;
     document.getElementById("matricula").textContent = aluno.matricula;
     document.getElementById("email").textContent = aluno.email;
+    document.getElementById("genero").textContent = aluno.genero || inferirGenero(aluno.nome);
     document.getElementById("media").textContent = aluno.media;
     document.getElementById("destaque").textContent = aluno.destaque;
 
-    // Foto
     document.getElementById("fotoAluno").src = aluno.foto;
 
-    // Notas
     document.getElementById("matematica").textContent = aluno.notas.matematica;
     document.getElementById("portugues").textContent = aluno.notas.portugues;
     document.getElementById("historia").textContent = aluno.notas.historia;
