@@ -1,0 +1,144 @@
+:root {
+  --cor-principal: rgb(55, 88, 104);
+  --cor-hover: rgb(48, 152, 205);
+}
+
+body { background-color: #f0f4f7; font-family: 'Segoe UI', sans-serif; }
+
+/* ── Navbar ── */
+.navbar { background-color: var(--cor-principal) !important; }
+.navbar-brand { font-size: 1.3rem; font-weight: 700; color: #fff !important; letter-spacing: 1px; }
+.nav-link { color: rgba(255,255,255,.85) !important; font-weight: 500; }
+.nav-link:hover { color: #fff !important; }
+
+/* ── Carousel ── */
+.carousel-slide {
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.carousel-slide-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.38);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px; text-align: center;
+}
+.carousel-slide-overlay h2 { color: #fff; font-size: 2rem; font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,.5); }
+.carousel-slide-overlay p  { color: rgba(255,255,255,.9); font-size: 1rem; max-width: 600px; margin-top: 8px; }
+.carousel-slide-overlay .badge-turno { font-size: .85rem; padding: 5px 14px; border-radius: 20px; margin-top: 10px; font-weight: 600; }
+.carousel-control-prev-icon,
+.carousel-control-next-icon { filter: drop-shadow(0 2px 4px rgba(0,0,0,.5)); }
+
+/* ── Search bar ── */
+.search-bar { background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.search-bar input { border-radius: 8px; }
+.search-bar button { border-radius: 8px; background-color: var(--cor-principal); border-color: var(--cor-principal); }
+.search-bar button:hover { background-color: var(--cor-hover); border-color: var(--cor-hover); }
+
+/* ── Turma Cards ── */
+.turma-card {
+  border: none; border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.1);
+  overflow: hidden; cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  height: 100%;
+}
+.turma-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.16); }
+.turma-card-header {
+  height: 110px; position: relative;
+  display: flex; align-items: flex-end;
+  padding: 10px 14px;
+}
+.turma-card-ano {
+  font-size: 2.8rem; font-weight: 900;
+  color: rgba(255,255,255,.25);
+  position: absolute; top: 8px; right: 12px;
+  line-height: 1;
+}
+.turma-card-body { padding: 14px; background: #fff; }
+.turma-card-body h5 { color: var(--cor-principal); font-weight: 700; margin-bottom: 6px; }
+.turma-card-body p  { font-size: .85rem; color: #555; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.turma-card-footer { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #f8f9fa; border-top: 1px solid #eee; }
+.turma-card-footer small { color: #888; font-size: .78rem; }
+
+/* ── Fav button ── */
+.btn-fav {
+  background: none; border: none; padding: 4px 8px;
+  font-size: 1.15rem; color: #ccc; cursor: pointer;
+  transition: color .15s, transform .15s;
+  position: absolute; top: 8px; right: 10px;
+}
+.btn-fav:hover { transform: scale(1.2); }
+.btn-fav .fa-solid { color: #e74c3c; }
+.btn-fav .fa-regular { color: rgba(255,255,255,.7); }
+
+/* ── Author section ── */
+.autor-section { background: var(--cor-principal); color: #fff; border-radius: 16px; padding: 40px; }
+.autor-avatar {
+  width: 110px; height: 110px; border-radius: 50%;
+  border: 4px solid rgba(255,255,255,.35);
+  object-fit: cover;
+}
+.autor-section h4  { font-weight: 700; }
+.autor-section .social a { color: rgba(255,255,255,.75); font-size: 1.4rem; margin-right: 12px; transition: color .15s; }
+.autor-section .social a:hover { color: #fff; }
+
+/* ── Section titles ── */
+.section-title {
+  color: var(--cor-principal); font-weight: 800;
+  border-left: 5px solid var(--cor-principal);
+  padding-left: 12px; margin-bottom: 24px;
+}
+
+/* ── Page header ── */
+.page-header { background: var(--cor-principal); color: #fff; padding: 16px 24px; border-radius: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.page-header h1 { font-size: 1.4rem; font-weight: 700; margin: 0; }
+.page-header .badge-turno { font-size: .85rem; }
+
+/* ── Forms ── */
+.form-card { background: #fff; border-radius: 14px; padding: 32px; box-shadow: 0 3px 16px rgba(0,0,0,.08); max-width: 500px; margin: 0 auto; }
+.form-card h3 { color: var(--cor-principal); font-weight: 700; margin-bottom: 24px; }
+.btn-primary-ne { background-color: var(--cor-principal); border-color: var(--cor-principal); color: #fff; border-radius: 8px; font-weight: 600; }
+.btn-primary-ne:hover { background-color: var(--cor-hover); border-color: var(--cor-hover); color: #fff; }
+
+/* ── Student list ── */
+.aluno-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #eee; transition: background .12s; }
+.aluno-item:hover { background: #f5f8fa; }
+.aluno-nome { font-weight: 600; color: var(--cor-principal); font-size: .95rem; }
+.aluno-sub  { font-size: .8rem; color: #888; }
+
+/* ── CRUD table ── */
+.table-turmas th { background-color: var(--cor-principal); color: #fff; font-weight: 600; }
+.table-turmas td { vertical-align: middle; }
+
+/* ── Favoritos ── */
+.fav-empty { text-align: center; padding: 60px 20px; color: #aaa; }
+.fav-empty i { font-size: 3rem; margin-bottom: 12px; display: block; }
+
+/* ── Detalhes turma ── */
+.turma-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+.stat-box { background: #fff; border-radius: 10px; padding: 14px 20px; text-align: center; flex: 1; min-width: 100px; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+.stat-box .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--cor-principal); }
+.stat-box .stat-lbl { font-size: .75rem; color: #888; margin-top: 2px; }
+
+/* ── Notas modal ── */
+.notas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ── Footer ── */
+footer { background: var(--cor-principal); color: rgba(255,255,255,.8); padding: 16px 0; margin-top: 48px; }
+footer a { color: rgba(255,255,255,.7); font-size: 1.2rem; margin: 0 6px; transition: color .15s; }
+footer a:hover { color: #fff; }
+
+/* ── Responsive ── */
+@media (max-width: 576px) {
+  .carousel-slide { height: 220px; }
+  .carousel-slide-overlay h2 { font-size: 1.4rem; }
+  .turma-card-header { height: 80px; }
+  .notas-grid { grid-template-columns: 1fr; }
+}

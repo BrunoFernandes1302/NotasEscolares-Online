@@ -1,301 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Aluno</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes da Turma — Notas Escolares</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="pagina_detalhes">
+<body>
 
-    <header>
-        <div class="img_cabecalho" style="justify-content:flex-start; padding-left:20px;">
-            <span style="font-size:20px; font-weight:bold; color:var(--cor-principal);">PUC Minas</span>
-        </div>
-        <div class="titulo_cabecalho">
-            <h1>Guia do Aluno</h1>
-        </div>
-    </header>
-
-    <main>
-        <section id="secao_detalhes">
-
-            <!-- Barra de ações -->
-            <div id="detalhe_cabecalho">
-                <button class="btn_voltar" onclick="window.history.back()">&#8592; Voltar</button>
-                <span id="detalhe_turma"></span>
-                <div class="detalhe_acoes">
-                    <button class="btn_editar_detalhe" id="btn_editar_detalhe">&#9998; Editar</button>
-                    <button class="btn_excluir_detalhe" id="btn_excluir_detalhe">&#128465; Excluir</button>
-                </div>
-            </div>
-
-            <!-- Informações pessoais -->
-            <div id="informacoes_alunos">
-                <div class="espaco_foto">
-                    <img id="fotoAluno" src="imagens/foto_de_homem_generica.png" alt="Foto do aluno">
-                </div>
-                <div class="espaco_informacoes">
-                    <div class="linha_informacao">
-                        <div class="conteiner_informacao">
-                            <label>Nome Completo:</label>
-                            <span id="nomeCompleto"></span>
-                        </div>
-                        <div class="conteiner_informacao">
-                            <label>CPF:</label>
-                            <span id="cpf"></span>
-                        </div>
-                    </div>
-                    <div class="linha_informacao">
-                        <div class="conteiner_informacao">
-                            <label>Número de matrícula:</label>
-                            <span id="matricula"></span>
-                        </div>
-                        <div class="conteiner_informacao">
-                            <label>Email:</label>
-                            <span id="email"></span>
-                        </div>
-                    </div>
-                    <div class="linha_informacao">
-                        <div class="conteiner_informacao">
-                            <label>Gênero:</label>
-                            <span id="genero"></span>
-                        </div>
-                        <div class="conteiner_informacao">
-                            <label>Média geral:</label>
-                            <span id="media"></span>
-                        </div>
-                    </div>
-                    <div class="linha_informacao">
-                        <div class="conteiner_informacao">
-                            <label>Matéria Destaque:</label>
-                            <span id="destaque"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Notas -->
-            <div id="notas_alunos">
-                <div class="linha_informacao">
-                    <div class="conteiner_informacao">
-                        <label>Matemática:</label>
-                        <span id="matematica"></span>
-                    </div>
-                    <div class="conteiner_informacao">
-                        <label>Língua Portuguesa:</label>
-                        <span id="portugues"></span>
-                    </div>
-                </div>
-                <div class="linha_informacao">
-                    <div class="conteiner_informacao">
-                        <label>História:</label>
-                        <span id="historia"></span>
-                    </div>
-                    <div class="conteiner_informacao">
-                        <label>Geografia:</label>
-                        <span id="geografia"></span>
-                    </div>
-                </div>
-                <div class="linha_informacao">
-                    <div class="conteiner_informacao">
-                        <label>Física:</label>
-                        <span id="fisica"></span>
-                    </div>
-                    <div class="conteiner_informacao">
-                        <label>Biologia:</label>
-                        <span id="biologia"></span>
-                    </div>
-                </div>
-                <div class="linha_informacao">
-                    <div class="conteiner_informacao">
-                        <label>Filosofia:</label>
-                        <span id="filosofia"></span>
-                    </div>
-                    <div class="conteiner_informacao">
-                        <label>Sociologia:</label>
-                        <span id="sociologia"></span>
-                    </div>
-                </div>
-                <div class="linha_informacao">
-                    <div class="conteiner_informacao">
-                        <label>Língua Inglesa:</label>
-                        <span id="ingles"></span>
-                    </div>
-                    <div class="conteiner_informacao">
-                        <label>Redação:</label>
-                        <span id="redacao"></span>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-    </main>
-
-    <footer>
-        <div class="texto_rodape">
-            <p>Escola Fictícia Puc Contagem 2.0</p>
-        </div>
-        <div class="direito_rodape">
-            <div class="icons_redes">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <p id="copyright">@2026Notas</p>
-        </div>
-    </footer>
-
-    <!-- Modal de edição -->
-    <div id="modal_aluno" class="modal_overlay">
-        <div class="modal_conteudo">
-            <div class="modal_header">
-                <h2 id="modal_titulo">Editar Aluno</h2>
-            </div>
-            <div class="modal_body">
-                <div class="modal_secao">
-                    <h3>Informações Pessoais</h3>
-                    <div class="modal_grid">
-                        <div class="modal_campo">
-                            <label>Nome (botão):</label>
-                            <input type="text" id="m_nome" placeholder="Ex: Carlos">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Gênero:</label>
-                            <select id="m_genero">
-                                <option value="Masculino">Masculino</option>
-                                <option value="Feminino">Feminino</option>
-                            </select>
-                        </div>
-                        <div class="modal_campo">
-                            <label>Nome Completo:</label>
-                            <input type="text" id="m_nomeCompleto" placeholder="Ex: Carlos Eduardo da Silva">
-                        </div>
-                        <div class="modal_campo">
-                            <label>CPF:</label>
-                            <input type="text" id="m_cpf" placeholder="000.000.000-00">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Matrícula:</label>
-                            <input type="text" id="m_matricula" placeholder="12345678">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Email:</label>
-                            <input type="text" id="m_email" placeholder="email@gmail.com">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Média Geral (calculada):</label>
-                            <input type="number" id="m_media" min="0" max="10" step="0.1" placeholder="—" readonly>
-                        </div>
-                        <div class="modal_campo modal_campo_largo">
-                            <label>Matéria Destaque:</label>
-                            <input type="text" id="m_destaque" placeholder="Ex: Matemática">
-                        </div>
-                        <div class="modal_campo modal_campo_largo">
-                            <label>Foto do Aluno:</label>
-                            <div class="modal_foto_container">
-                                <img id="m_foto_preview" src="imagens/foto_de_homem_generica.png" alt="Preview da foto">
-                                <div class="modal_foto_acoes">
-                                    <input type="file" id="m_foto" accept="image/*" onchange="previewFoto(this)">
-                                    <button type="button" id="btn_remover_foto" onclick="removerFoto()">Remover foto</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal_secao">
-                    <h3>Notas</h3>
-                    <div class="modal_grid">
-                        <div class="modal_campo">
-                            <label>Matemática:</label>
-                            <input type="number" id="m_matematica" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Língua Portuguesa:</label>
-                            <input type="number" id="m_portugues" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>História:</label>
-                            <input type="number" id="m_historia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Geografia:</label>
-                            <input type="number" id="m_geografia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Física:</label>
-                            <input type="number" id="m_fisica" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Biologia:</label>
-                            <input type="number" id="m_biologia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Filosofia:</label>
-                            <input type="number" id="m_filosofia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Sociologia:</label>
-                            <input type="number" id="m_sociologia" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Língua Inglesa:</label>
-                            <input type="number" id="m_ingles" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                        <div class="modal_campo">
-                            <label>Redação:</label>
-                            <input type="number" id="m_redacao" min="0" max="10" step="0.1" placeholder="0.0" oninput="atualizarMediaModal()">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal_rodape">
-                <button id="btn_salvar_modal" onclick="salvarAluno()">Salvar</button>
-                <button id="btn_cancelar_modal" onclick="fecharModal()">Cancelar</button>
-            </div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fa-solid fa-graduation-cap me-2"></i>Notas Escolares</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+      <div class="d-flex align-items-center gap-2" id="navbar-links"></div>
     </div>
+  </div>
+</nav>
 
-    <script src="script.js"></script>
-    <script>
-        var currentTurma, currentIndex;
+<div class="container py-4" id="pagina-detalhes">
+  <!-- conteúdo injetado por detalhes.js -->
+</div>
 
-        (function () {
-            const params   = new URLSearchParams(window.location.search);
-            currentTurma   = params.get('turma');
-            const cpfParam = decodeURIComponent(params.get('cpf') || '');
-            const lista    = currentTurma && turmas[currentTurma] ? turmas[currentTurma] : [];
-            currentIndex   = lista.findIndex(function(a) { return a.cpf === cpfParam; });
-            const aluno    = lista[currentIndex];
+<!-- Modal aluno -->
+<div class="modal fade" id="modalAluno" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background:var(--cor-principal);color:#fff">
+        <h5 class="modal-title" id="modalAlunoTitulo">Aluno</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="modalAlunoBody"></div>
+      <div class="modal-footer" id="modalAlunoFooter"></div>
+    </div>
+  </div>
+</div>
 
-            if (!aluno) {
-                document.getElementById('secao_detalhes').innerHTML =
-                    '<p style="padding:24px;color:var(--cor-principal);font-size:18px;">' +
-                    'Aluno não encontrado. <a href="index.html" style="color:var(--cor-principalHover)">&#8592; Voltar</a></p>';
-                return;
-            }
+<!-- Modal editar/adicionar aluno (admin) -->
+<div class="modal fade" id="modalFormAluno" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background:var(--cor-principal);color:#fff">
+        <h5 class="modal-title" id="formAlunoTitulo">Aluno</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Nome (abreviado)</label>
+            <input type="text" id="a-nome" class="form-control" placeholder="Ex: Carlos">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Nome Completo *</label>
+            <input type="text" id="a-nomeCompleto" class="form-control" placeholder="Carlos Eduardo da Silva">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">CPF</label>
+            <input type="text" id="a-cpf" class="form-control" placeholder="000.000.000-00">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Matrícula</label>
+            <input type="text" id="a-matricula" class="form-control" placeholder="12345678">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">E-mail</label>
+            <input type="text" id="a-email" class="form-control" placeholder="aluno@email.com">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">Gênero</label>
+            <select id="a-genero" class="form-select">
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">Matéria Destaque</label>
+            <input type="text" id="a-destaque" class="form-control" placeholder="Matemática">
+          </div>
+        </div>
+        <hr class="my-3">
+        <h6 class="fw-bold" style="color:var(--cor-principal)">Notas</h6>
+        <div class="notas-grid">
+          <div><label class="form-label">Matemática</label><input type="number" id="a-matematica" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">Língua Portuguesa</label><input type="number" id="a-portugues" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">História</label><input type="number" id="a-historia" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">Geografia</label><input type="number" id="a-geografia" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">Física</label><input type="number" id="a-fisica" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">Biologia</label><input type="number" id="a-biologia" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">Filosofia</label><input type="number" id="a-filosofia" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">Sociologia</label><input type="number" id="a-sociologia" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">Inglês</label><input type="number" id="a-ingles" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+          <div><label class="form-label">Redação</label><input type="number" id="a-redacao" class="form-control" min="0" max="10" step="0.1" oninput="recalcMedia()"></div>
+        </div>
+        <div class="mt-3">
+          <label class="form-label fw-bold">Média Geral (calculada)</label>
+          <input type="text" id="a-media" class="form-control fw-bold" style="color:var(--cor-principal)" readonly>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary-ne" onclick="salvarAluno()">
+          <i class="fa-solid fa-floppy-disk me-1"></i>Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
-            mostrarAluno(aluno);
-            document.getElementById('detalhe_turma').textContent = 'Turma: ' + currentTurma;
-            document.title = aluno.nomeCompleto + ' — Guia do Aluno';
+<footer class="text-center py-3 mt-4">
+  <p class="mb-0 small opacity-75">&copy; 2026 Notas Escolares Online</p>
+</footer>
 
-            document.getElementById('btn_editar_detalhe').onclick = function () {
-                abrirModalEditar(currentTurma, currentIndex);
-            };
-
-            document.getElementById('btn_excluir_detalhe').onclick = function () {
-                const a = turmas[currentTurma][currentIndex];
-                if (!confirm('Deseja excluir o aluno "' + a.nomeCompleto + '"?')) return;
-                turmas[currentTurma].splice(currentIndex, 1);
-                window.location.href = 'index.html';
-            };
-
-            document.getElementById('modal_aluno').addEventListener('click', function (e) {
-                if (e.target === this) fecharModal();
-            });
-        })();
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/dados.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/detalhes.js"></script>
 </body>
 </html>
