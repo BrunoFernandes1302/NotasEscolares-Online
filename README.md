@@ -1,16 +1,67 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/FRq__5Vn)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=23155472&assignment_repo_type=AssignmentRepo)
+# Notas Escolares Online
 
-## Informações Gerais
+Sistema web para gerenciamento de alunos e notas escolares, com interface intuitiva e responsiva. Permite consultar, cadastrar, editar e excluir alunos de múltiplas turmas, visualizando informações como notas por disciplina, média geral e matéria destaque.
 
-- Nome: Bruno Henrique Fernandes Jardim
-- Matricula: 925887
-- Proposta de projeto escolhida: Escolas e turmas
-- Breve descrição sobre seu projeto: Site para consultar quais alunos estão matriculados na escola com suas respectivas informações como notas, nome, email, materia destaque.
+---
 
+## Funcionalidades
 
-![alt text](public/imagens/botao_ver_mais.png)
+- **Listagem de turmas** — navegue entre as turmas do 1º ao 3º ano (A, B e C)
+- **Busca avançada** — pesquise alunos por nome, CPF ou e-mail
+- **Ficha completa do aluno** — foto, dados pessoais, notas por disciplina e média geral calculada automaticamente
+- **Cadastro de alunos** — adicione novos alunos com upload de foto e seleção de turma
+- **Edição de dados** — atualize informações pessoais e notas de qualquer aluno
+- **Exclusão de alunos** — remova registros de turmas com confirmação
+- **Design responsivo** — adaptado para desktop, tablet e dispositivos móveis
 
-![alt text](public/imagens/query_string.png)
+---
 
-![alt text](public/imagens/json.png)
+## Tecnologias Utilizadas
+
+| Tecnologia | Uso |
+|---|---|
+| HTML5 | Estrutura das páginas |
+| CSS3 | Estilização, Grid, Flexbox e responsividade |
+| JavaScript (Vanilla) | Lógica de negócio, manipulação do DOM e busca |
+| Font Awesome 6.5 | Ícones da interface |
+
+> Sem dependências externas além do Font Awesome. Funciona diretamente no navegador, sem necessidade de servidor ou banco de dados.
+
+---
+
+## Como Usar
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/BrunoFernandes1302/NotasEscolares-Online.git
+   ```
+2. Abra o arquivo `public/index.html` diretamente no navegador.
+
+---
+
+## Estrutura do Projeto
+
+```
+public/
+├── index.html       # Página principal com listagem e busca
+├── detalhes.html    # Página de detalhes e notas do aluno
+├── script.js        # Lógica da aplicação
+├── style.css        # Estilos globais
+└── imagens/         # Assets de imagem
+```
+
+---
+
+## Capturas de Tela
+
+![Botão Ver Mais](public/imagens/botao_ver_mais.png)
+
+![Query String](public/imagens/query_string.png)
+
+![Estrutura JSON](public/imagens/json.png)
+
+---
+
+## Autor
+
+**Bruno Henrique Fernandes Jardim**
