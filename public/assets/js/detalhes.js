@@ -84,8 +84,8 @@ function renderPagina() {
 }
 
 function renderListaAlunos() {
-  const alunos = (DB.getAlunos()[turmaId] || [])
-    .slice().sort((a, b) => a.nomeCompleto.localeCompare(b.nomeCompleto, 'pt-BR'));
+  const todosAlunos = DB.getAlunos()[turmaId] || [];
+  const alunos = todosAlunos.slice().sort((a, b) => a.nomeCompleto.localeCompare(b.nomeCompleto, 'pt-BR'));
   const container = document.getElementById('lista-alunos');
   if (!container) return;
 
@@ -95,7 +95,7 @@ function renderListaAlunos() {
   }
 
   container.innerHTML = alunos.map((a, i) => {
-    const idx = DB.getAlunos()[turmaId].indexOf(a);
+    const idx = todosAlunos.indexOf(a);
     const foto = a.foto || (a.genero === 'Feminino' ? 'imagens/foto_mulher_generica.png' : 'imagens/foto_de_homem_generica.png');
     const acoes = Auth.isAdmin() ? `
       <button class="btn btn-sm btn-warning me-1" onclick="abrirFormEditar(${idx})"><i class="fa-solid fa-pen"></i></button>
